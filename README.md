@@ -1,4 +1,4 @@
-# XML-LookUp-Analysis
+# iTunes XML Metadata LookUp Analysis Tool
 Windows/OS X desktop app for analysing iTunes XML metadata lookups
 
 Instructions for use:
