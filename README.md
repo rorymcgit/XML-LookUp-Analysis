@@ -1,5 +1,5 @@
 # iTunes XML Metadata LookUp Analysis Tool
-Windows/OS X desktop app for analysing iTunes XML metadata lookups
+Windows/OS X desktop app for analysing iTunes XML metadata lookups.
 
 Instructions for use:
 - Use iTunes Transporter to download desired Film lookup metadata XML.
