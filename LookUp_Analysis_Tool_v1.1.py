@@ -24,7 +24,6 @@ def stringify_children(node):
     from itertools import chain
     parts = ([node.text] + list(chain(*([tostring(c, with_tail=False), c.tail]
                                         for c in node.getchildren()))) + [node.tail])
-    # filter removes possible Nones in texts and tails
     return ''.join(filter(None, parts))
 
 
@@ -184,7 +183,7 @@ class ScrolledWindow(wx.Frame):
         dateTime = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
         vendorID = soup.vendor_id.contents[0]
         featureTitle = soup.title.contents[0]
-                                
+
         if systemType == "Darwin":
             OutputDoc = self.dropFiles + '/LookUpAnalysis_' + vendorID + '.txt'
 
@@ -220,26 +219,26 @@ class ScrolledWindow(wx.Frame):
             text_doc.write('Previews count: ' + str(soup_preview_count) + '\n\n')
 
             cap_count = 0
-            for captionz in twoD_captions_list:
+            for captions in twoD_captions_list:
                 cap_count += 1
-                text_doc.write(captionz[1] + '\t\t' + 'Full sub locale: ' + captionz[2] + '\n')
+                text_doc.write(captions[1] + '\t\t' + 'Full sub locale: ' + captions[2] + '\n')
             text_doc.write('Closed captions count: ' + str(cap_count) + '\n\n')
 
             subs_count = 0
-            for fullsubz in twoD_full_subs_list:
-                if len(fullsubz[2]) > 2:
-                    print fullsubz[2]
+            for fullSubs in twoD_full_subs_list:
+                if len(fullSubs[2]) > 2:
+                    print fullSubs[2]
                     subs_count += 1
-                    text_doc.write(fullsubz[1] + '\t\t' + 'Full Sub locale: ' + fullsubz[2] + '\n')
+                    text_doc.write(fullSubs[1] + '\t\t' + 'Full Sub locale: ' + fullSubs[2] + '\n')
                 else:
                     subs_count += 1
-                    text_doc.write(fullsubz[1] + '\t\t\t' + 'Full Sub locale: ' + fullsubz[2] + '\n')
+                    text_doc.write(fullSubs[1] + '\t\t\t' + 'Full Sub locale: ' + fullSubs[2] + '\n')
             text_doc.write('Full subtitles count: ' + str(subs_count) + '\n\n')
 
             forced_count = 0
-            for forcedsubz in twoD_forced_subs_list:
+            for forcedSubs in twoD_forced_subs_list:
                 forced_count += 1
-                text_doc.write(forcedsubz[1] + '\t\t' + 'Forced sub locale: ' + forcedsubz[2] + '\n')
+                text_doc.write(forcedSubs[1] + '\t\t' + 'Forced sub locale: ' + forcedSubs[2] + '\n')
             text_doc.write('Forced subtitles count: ' + str(forced_count) + '\n\n')
 
             Hoh_count = 0
