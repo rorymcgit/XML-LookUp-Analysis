@@ -20,7 +20,7 @@ Instructions for use:
     - ALTERNATE AUDIO:
       - filename, audio locale
 
-
+---
 I used:
 - Python 2.7
 - wxPython (a GUI framework)
