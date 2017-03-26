@@ -19,3 +19,10 @@ Instructions for use:
       - filename, subtitle locale
     - ALTERNATE AUDIO:
       - filename, audio locale
+
+
+I used:
+- Python 2.7
+- wxPython (a GUI framework)
+- lxml (an XML parser)
+- Beautiful Soup 4 (an HTML/XML parser-assister)
