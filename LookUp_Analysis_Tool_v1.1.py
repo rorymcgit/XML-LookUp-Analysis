@@ -25,13 +25,13 @@ def stringify_children(node):
     parts = ([node.text] + list(chain(*([tostring(c, with_tail=False), c.tail]
                                         for c in node.getchildren()))) + [node.tail])
     return ''.join(filter(None, parts))
-
-
+    
 
 class ScrolledWindow(wx.Frame):
     def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent, id, title, size=(350, 140), style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER |
-                                                wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
+        wx.Frame.__init__(self, parent, id, title, size=(350, 140),
+                          style=wx.DEFAULT_FRAME_STYLE & ~ (wx.RESIZE_BORDER |
+                          wx.RESIZE_BOX | wx.MAXIMIZE_BOX))
 
         self.panel = wx.Panel(self, wx.ID_ANY)
         self.Show()
@@ -50,7 +50,6 @@ class ScrolledWindow(wx.Frame):
         self.buttonSubmit.Bind(wx.EVT_BUTTON, self.parseXML)
 
     def parseXML(self, event):
-
         twoD_captions_list = []
         twoD_full_subs_list = []
         twoD_forced_subs_list = []
@@ -58,9 +57,9 @@ class ScrolledWindow(wx.Frame):
         twoD_audio_list = []
 
         for root, dirs, files in os.walk(self.dropFiles):
-            for file1 in files:
-                if file1.endswith(".xml") and not file1.startswith("."):
-                    filePath = os.path.join(root, file1)
+            for firstFile in files:
+                if firstFile.endswith(".xml") and not firstFile.startswith("."):
+                    filePath = os.path.join(root, firstFile)
                     with open(filePath) as f:
                         xml = f.readlines()
                         xml = ''.join(xml)
@@ -186,13 +185,11 @@ class ScrolledWindow(wx.Frame):
 
         if systemType == "Darwin":
             OutputDoc = self.dropFiles + '/LookUpAnalysis_' + vendorID + '.txt'
-
         else:
             OutputDoc = self.dropFiles + '\\LookUpAnalysis_' + vendorID + '.txt'
 
         with open(OutputDoc, 'w') as text_doc:
             text_doc.write('// ' + dateTime + '\n' + '// ' + featureTitle + '\n' + '// ' + vendorID + '\n\n\n')
-
             text_doc.write(feature_list[0] + '\t\t\t' + 'Audio: ' + feature_list[1] + '\n\n')
 
             soup_preview_count = 0
@@ -218,11 +215,11 @@ class ScrolledWindow(wx.Frame):
                 soup_preview_count += 1
             text_doc.write('Previews count: ' + str(soup_preview_count) + '\n\n')
 
-            cap_count = 0
+            caption_count = 0
             for captions in twoD_captions_list:
-                cap_count += 1
+                caption_count += 1
                 text_doc.write(captions[1] + '\t\t' + 'Full sub locale: ' + captions[2] + '\n')
-            text_doc.write('Closed captions count: ' + str(cap_count) + '\n\n')
+            text_doc.write('Closed captions count: ' + str(caption_count) + '\n\n')
 
             subs_count = 0
             for fullSubs in twoD_full_subs_list:
@@ -254,15 +251,12 @@ class ScrolledWindow(wx.Frame):
             text_doc.write('Alt audio count: ' + str(audio_count) + '\n\n')
 
         msg = wx.MessageDialog(self, "Your lookup analysis has been written to back to the ITMSP folder.\n\n" +
-                               OutputDoc, "Awesome!",
-                                    wx.OK | wx.ICON_INFORMATION)
+                               OutputDoc, "Awesome!", wx.OK | wx.ICON_INFORMATION)
         msg.ShowModal()
         msg.Close()
 
         print 'Status: Complete\nPlease check the document in ' + OutputDoc
-
         os.system("open " + OutputDoc)
-
         self.OnClose(ScrolledWindow)
 
     def setSubmissionDrop(self, dropFiles):
