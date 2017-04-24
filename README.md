@@ -25,4 +25,4 @@ I used:
 - Python 2.7
 - wxPython (a GUI framework)
 - lxml (an XML parser)
-- Beautiful Soup 4 (an HTML/XML parser-assister)
+- Beautiful Soup 4 (an HTML/XML parser)
