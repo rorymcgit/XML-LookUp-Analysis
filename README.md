@@ -20,7 +20,7 @@ Instructions for use:
     - ALTERNATE AUDIO:
       - filename, audio locale
       
-Requires compilation with py2app or similar.
+Requires compilation with py2app/py2exe or similar.
 
 ---
 I used:
