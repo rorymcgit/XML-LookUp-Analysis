@@ -10,8 +10,8 @@ from datetime import datetime
 
 
 '''
-To the next developer. I apologise for the state of this. It was done in a rushed few days, as I was learning my first
-programming language. Beautiful Soup was discovered towards the end, and the regex 'XML parsing' without this is horrific.
+Written in a rushed few days, as I was learning my first programming language. Beautiful Soup was discovered towards the end, and the
+regex 'XML parsing' without this is horrific.
 '''
 
 versionNumber = 'v1.1'
