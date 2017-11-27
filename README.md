@@ -19,6 +19,8 @@ Instructions for use:
       - filename, subtitle locale
     - ALTERNATE AUDIO:
       - filename, audio locale
+      
+Requires compilation with py2app or similar.
 
 ---
 I used:
